@@ -1,0 +1,92 @@
+<!-- v-model is 2-way binding here and {{todo.text}} is one way binding-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    
+    <style>
+      .completed { text-decoration: line-through;
+                    text-decoration-color: red; }
+    </style>
+
+    <title>checkbox to-do list</title>
+  </head>
+  <body>
+    <div class="container mt-sm-5" id="app">
+      <h2>To do list</h2>
+      <p> Total Items = {{counter}}</p>
+      <input type="text" placeholder="Add new items" v-model="newTodo">
+      <input type="date" v-model="newDate">
+
+      <input type="button" value="Add" class="btn btn-primary" @click="addTodo">
+      <input type="button" value="Delete All" class="btn btn-primary" @click="delAll"><br>
+
+     <!-- <input type="text" @click="datefunc"> -->
+     
+
+      <ul class="list-unstyled">
+        <li v-for="(todo,index) in todos" :class="{ completed: todo.completed }" >
+          <input type="checkbox" v-model="todo.completed">
+          
+          {{ todo.text }}    {{todo.date}}<input type="button" value="delete" @click="del(todo.index)">
+        </li>
+      </ul>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          newTodo: '',
+          todos: [],
+          newDate: '',
+          counter: 0,
+        },
+        methods: {
+          addTodo() {
+            if(this.newTodo!=''){
+            this.todos.push({ text: this.newTodo, completed: false, date: this.newDate});
+            this.counter++;
+          }
+            this.newTodo = '';
+    },
+
+          del: function(index){
+              this.todos.splice(index,1);
+              this.counter--;
+          },
+
+          delAll: function()
+          {
+              this.todos = [];
+              this.counter = 0;
+          },
+         
+                   
+        },
+
+         mounted() {
+          console.log('App mounted!');
+          if (localStorage.getItem('todos')) this.todos = JSON.parse(localStorage.getItem('todos'));
+        },
+        watch: {
+          todos: {
+            handler() {
+              console.log('Todos changed!');
+              localStorage.setItem('todos', JSON.stringify(this.todos));
+            },
+            deep: true,
+          },
+        },
+
+       
+      });
+    </script>
+   
+
+</body>
+</html>
