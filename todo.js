@@ -3,14 +3,15 @@ new Vue({
     data: {
       newTodo: '',
       todos: [],
-      newDate: '',
+      time: '',
       counter: 0,
     },
 
     methods: {
       addTodo() {
         if(this.newTodo!=''){
-        this.todos.push({ text: this.newTodo, completed: false, date: this.newDate});
+        this.todos.push({ text: this.newTodo, completed: false, time: this.time});
+        console.log(this.time)
         this.counter++;
       }
         this.newTodo = '';

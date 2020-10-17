@@ -22,16 +22,18 @@
         </ul>
       </div>
     </nav>
-    <label class="h3 ml-4"> It's time to get things done! </label>
+    
     <div class="container mt-sm-5" id="app">
-
+    	<label class="h3 ml-4 mb-4"> It's time to get things done! </label>
+    	<label class="h4"> You have {{counter}} task(s) today.</label>
+    	
 	    <form class="form-inline">
 	      <label class="sr-only" for="task">Task</label>
-	      <input type="text" class="form-control mb-2 mr-sm-2" id="task" placeholder="Enter your task" v-model="newTodo">
+	      <input type="text" class="form-control mb-2 mr-sm-2" id="task" placeholder="Task" v-model="newTodo">
 
-	      <label class="sr-only" for="inlineFormInputGroupUsername2">Date</label>
+	      <label class="sr-only" for="time">Time</label>
 	      <div class="input-group mb-2 mr-sm-2">
-	        <input type="date" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username" v-model="newDate">
+	        <input type="time" class="form-control" placeholder="Time" v-model="time">
 	      </div>
 
 	      <div class="input-group mb-2 mr-sm-2">
@@ -48,10 +50,10 @@
 	     <!-- <input type="text" @click="datefunc"> -->
 	     
 	      <ul class="list-unstyled">
-	        <li v-for="(todo,index) in todos" :class="{ completed: todo.completed }" >
+	        <li v-for="(todo,index) in todos" :class="{ completed: todo.completed }" class="my-2">
 	          <input type="checkbox" v-model="todo.completed">
 	          
-	          <big>{{todo.date}} {{ todo.text }}</big>
+	          <big>{{todo.time}} {{ todo.text }}</big>
 	          <input type="button" class="btn btn-danger ml-5" value="Delete" @click="del(index)">
 	        </li>
 	      </ul>
