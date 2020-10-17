@@ -1,5 +1,5 @@
 <!-- v-model is 2-way binding here and {{todo.text}} is one way binding-->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,6 +10,52 @@
     <style>
       .completed { text-decoration: line-through;
                     text-decoration-color: red; }
+                    button{
+          background-color: lightblue;
+          border-radius: 20px;
+         }
+         button:hover{
+          background-color: white;
+         }
+         input{
+          border-radius: 20px;
+          max-width: 150px;
+         }
+
+         div{
+          text-align: center;
+         
+         }
+         
+        .btn{
+          background-color: red;
+          padding-left: 10px;
+          border-radius: 20px;
+        }
+        #particles-js
+{
+        height: 100%;
+}
+
+#header
+{
+  height: 100vh;
+  background: url(background.jpg);
+  
+}
+p{
+  padding-top: 10px;
+}
+#btn{
+  background-color: red;
+  border-radius: 20px;
+}
+#container{
+    margin-top: 100px;
+}
+#main{
+  padding-top: 100px;
+}
     </style>
 
     <title>checkbox to-do list</title>
@@ -86,7 +132,7 @@
        
       });
     </script>
-   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 </body>
 </html>
