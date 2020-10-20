@@ -58,10 +58,16 @@ p{
 }
     </style>
 
-    <title>checkbox to-do list</title>
+    <title>ToDo List</title>
   </head>
   <body>
-    <div class="container mt-sm-5" id="app">
+  	<section id="header">
+  		<div id="particles-js">
+    <div class="container text-center">
+    <div class="container" id="tlist">
+    	<script type="text/javascript" src="particles.js"></script>
+    	<script type="text/javascript" src="app.js"></script>
+    	<div class="main">
       <h2>To do list</h2>
       <p> Total Items = {{counter}}</p>
       <input type="text" placeholder="Add new items" v-model="newTodo">
@@ -81,11 +87,15 @@ p{
         </li>
       </ul>
     </div>
+</div>
+</div>
+</div>
+</section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
     <script>
       new Vue({
-        el: '#app',
+        el: '#tlist',
         data: {
           newTodo: '',
           todos: [],
